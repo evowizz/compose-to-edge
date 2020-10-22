@@ -6,7 +6,7 @@ Compose-To-Edge is a small library allowing you to easily setup edge-to-edge con
 
 ## Setup
 Let's start by adding Jitpack to your project.
-```
+```gradle
 	allprojects {
 		repositories {
 			...
@@ -15,7 +15,7 @@ Let's start by adding Jitpack to your project.
 	}
 ```
 Finally, just add the dependency.
-```
+```gradle
     dependencies {
         // Latest available version can be found at the very top of the README file
         implementation 'com.github.evowizz:compose-to-edge:$version'
@@ -24,7 +24,7 @@ Finally, just add the dependency.
 
 ## Usage
 Here's how you would start a basic Jetpack Compose project.
-```
+```kt
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
@@ -35,7 +35,7 @@ Here's how you would start a basic Jetpack Compose project.
   }
 ```
 To get started with Compose-To-Edge, the only thing you need to do is to replace `setContent` with `setEdgeToEdgeContent` as seen in the following example.
-```
+```kt
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setEdgeToEdgeContent {

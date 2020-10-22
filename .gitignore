@@ -1,0 +1,18 @@
+.gradle
+.DS_Store
+.externalNativeBuild
+/build
+/captures
+/local.properties
+
+# IntelliJ
+*.iml
+.idea/*
+!.idea/copyright/
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+.idea/assetWizardSettings.xml
+
+*.jks

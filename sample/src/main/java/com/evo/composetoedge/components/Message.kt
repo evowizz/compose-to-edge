@@ -56,14 +56,12 @@ fun Message(
         modifier: Modifier = Modifier
 ) {
   val bubbleColor =
-          if (MaterialTheme.colors.isLight) {
-            Color(0xFFF5F5F5)
-          } else {
-            Color(0xFF222222)
-          }
+          if (MaterialTheme.colors.isLight) Color(0xFFF5F5F5) else Color(0xFF222222)
 
   ConstraintLayout(Modifier.fillMaxWidth().then(modifier)) {
-    val (avatar, username, message, moreOptions) = createRefs()
+    // Declaring them separately for visibility
+    val (avatar, username) = createRefs()
+    val (message, moreOptions) = createRefs()
 
     Avatar(
             name = post.username,
@@ -112,7 +110,7 @@ fun Message(
       Image(
               asset = Icons.Filled.MoreVert,
               modifier = Modifier.size(24.dp),
-              colorFilter = ColorFilter.tint(Color(0x80000000))
+              colorFilter = ColorFilter.tint(MaterialTheme.colors.onBackground.copy(alpha = 0.60f))
       )
     }
   }

@@ -24,8 +24,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.ColorUtils
 import androidx.ui.tooling.preview.Preview
 import com.evo.composetoedge.data.androidPost
 
@@ -42,11 +45,18 @@ private val AvatarColors = arrayOf(
 
 @Composable
 fun Avatar(name: String, modifier: Modifier = Modifier) {
+  val backgroundColor = AvatarColors.random().toInt()
+  val textColor = ColorUtils.blendARGB(backgroundColor, Color.Black.toArgb(), 0.4f)
   Surface(
-          color = Color(AvatarColors.random()),
+          color = Color(backgroundColor),
           modifier = Modifier.size(54.dp).clip(RoundedCornerShape(50)).then(modifier)
   ) {
-    Text(text = name.first().toUpperCase().toString(), fontSize = 16.sp)
+    Text(
+            text = name.first().toUpperCase().toString(),
+            fontWeight = FontWeight.Medium,
+            fontSize = 20.sp,
+            color = Color(textColor)
+    )
   }
 }
 

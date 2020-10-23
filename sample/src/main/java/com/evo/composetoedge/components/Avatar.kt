@@ -17,9 +17,6 @@
 package com.evo.composetoedge.components
 
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Stack
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
@@ -27,10 +24,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
+import com.evo.composetoedge.data.androidPost
 
 /**
  * Created by Dylan Roussel on 23/10/2020
@@ -44,10 +41,10 @@ private val AvatarColors = arrayOf(
 )
 
 @Composable
-fun Avatar(name: String) {
+fun Avatar(name: String, modifier: Modifier = Modifier) {
   Surface(
           color = Color(AvatarColors.random()),
-          modifier = Modifier.size(54.dp).clip(RoundedCornerShape(50))
+          modifier = Modifier.size(54.dp).clip(RoundedCornerShape(50)).then(modifier)
   ) {
     Text(text = name.first().toUpperCase().toString(), fontSize = 16.sp)
   }
@@ -56,5 +53,5 @@ fun Avatar(name: String) {
 @Preview
 @Composable
 fun PreviewAvatar() {
-  Avatar(name = "Android")
+  Avatar(name = androidPost.username)
 }

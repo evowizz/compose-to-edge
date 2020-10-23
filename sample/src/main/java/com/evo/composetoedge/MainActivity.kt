@@ -19,26 +19,26 @@ package com.evo.composetoedge
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.DensityAmbient
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
+import com.evo.composetoedge.components.Messages
+import com.evo.composetoedge.data.initialPosts
 import com.evo.composetoedge.ui.ComposeToEdgeTheme
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    
+
     setEdgeToEdgeContent {
       ComposeToEdgeTheme {
         Surface(color = MaterialTheme.colors.background) {
-          val items = (0..100).toList()
 
           val topPadding: Dp
           val bottomPadding: Dp
@@ -53,12 +53,9 @@ class MainActivity : AppCompatActivity() {
                   contentPadding = PaddingValues(
                           top = topPadding,
                           bottom = bottomPadding,
-                          start = 16.dp
                   )
           ) {
-            items.forEach {
-              Text("I'm the very long item n°$it")
-            }
+            Messages(posts = initialPosts, modifier = Modifier.padding(start = 16.dp))
           }
         }
       }

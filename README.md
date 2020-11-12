@@ -2,17 +2,17 @@
 
 # Compose-To-Edge
 
-Compose-To-Edge is a small library allowing you to easily setup edge-to-edge configurations for your Jetpack Compose app.
+Compose-To-Edge is a small library allowing you to easily set up edge-to-edge configurations for your Jetpack Compose app.
 
 ## Setup
 Let's start by adding Jitpack to your project.
 ```gradle
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    allprojects {
+	    repositories {
+		    ...
+		    maven { url 'https://jitpack.io' }
+	    }
+    }
 ```
 Finally, just add the dependency.
 ```gradle

@@ -17,11 +17,11 @@
 package com.evo.composetoedge.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
@@ -32,7 +32,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.evo.composetoedge.data.androidPost
-import com.evo.composetoedge.data.initialPosts
 
 /**
  * Created by Dylan Roussel on 23/10/2020
@@ -52,11 +51,11 @@ fun Messages(posts: List<Post>, modifier: Modifier) {
 
 @Composable
 fun Message(
-        post: Post,
-        modifier: Modifier = Modifier
+  post: Post,
+  modifier: Modifier = Modifier
 ) {
   val bubbleColor =
-          if (MaterialTheme.colors.isLight) Color(0xFFF5F5F5) else Color(0xFF222222)
+    if (MaterialTheme.colors.isLight) Color(0xFFF5F5F5) else Color(0xFF222222)
 
   ConstraintLayout(Modifier.fillMaxWidth().then(modifier)) {
     // Declaring them separately for visibility
@@ -64,53 +63,53 @@ fun Message(
     val (message, moreOptions) = createRefs()
 
     Avatar(
-            name = post.username,
-            modifier = Modifier.constrainAs(avatar) {
-              start.linkTo(parent.start)
-              top.linkTo(parent.top)
-            }
+      name = post.username,
+      modifier = Modifier.constrainAs(avatar) {
+        start.linkTo(parent.start)
+        top.linkTo(parent.top)
+      }
     )
 
     Text(
-            text = post.username,
-            style = MaterialTheme.typography.body1,
-            fontWeight = FontWeight.Medium,
-            color = MaterialTheme.colors.onBackground,
-            modifier = Modifier.constrainAs(username) {
-              start.linkTo(avatar.end, 12.dp)
-            }
+      text = post.username,
+      style = MaterialTheme.typography.body1,
+      fontWeight = FontWeight.Medium,
+      color = MaterialTheme.colors.onBackground,
+      modifier = Modifier.constrainAs(username) {
+        start.linkTo(avatar.end, 12.dp)
+      }
     )
 
     // Message bubble
     Surface(
-            color = bubbleColor,
-            shape = RoundedCornerShape(0.dp, 8.dp, 8.dp, 8.dp),
-            modifier = Modifier.constrainAs(message) {
-              width = Dimension.preferredWrapContent.atMostWrapContent
-              top.linkTo(username.bottom, 4.dp)
-              linkTo(username.start, moreOptions.start, endMargin = 16.dp, bias = 0f)
-            }
+      color = bubbleColor,
+      shape = RoundedCornerShape(0.dp, 8.dp, 8.dp, 8.dp),
+      modifier = Modifier.constrainAs(message) {
+        width = Dimension.preferredWrapContent.atMostWrapContent
+        top.linkTo(username.bottom, 4.dp)
+        linkTo(username.start, moreOptions.start, endMargin = 16.dp, bias = 0f)
+      }
     ) {
       Text(
-              text = post.message,
-              style = MaterialTheme.typography.subtitle1,
-              modifier = Modifier.padding(8.dp)
+        text = post.message,
+        style = MaterialTheme.typography.subtitle1,
+        modifier = Modifier.padding(8.dp)
       )
     }
 
     // More Options
     Surface(
-            color = bubbleColor,
-            shape = RoundedCornerShape(50),
-            modifier = Modifier.size(32.dp).constrainAs(moreOptions) {
-              end.linkTo(parent.end, 16.dp)
-              centerVerticallyTo(message)
-            }
+      color = bubbleColor,
+      shape = RoundedCornerShape(50),
+      modifier = Modifier.size(32.dp).constrainAs(moreOptions) {
+        end.linkTo(parent.end, 16.dp)
+        centerVerticallyTo(message)
+      }
     ) {
       Image(
-              asset = Icons.Filled.MoreVert,
-              modifier = Modifier.size(24.dp),
-              colorFilter = ColorFilter.tint(MaterialTheme.colors.onBackground.copy(alpha = 0.60f))
+        asset = Icons.Filled.MoreVert,
+        modifier = Modifier.size(24.dp),
+        colorFilter = ColorFilter.tint(MaterialTheme.colors.onBackground.copy(alpha = 0.60f))
       )
     }
   }

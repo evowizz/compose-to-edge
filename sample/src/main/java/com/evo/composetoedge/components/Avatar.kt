@@ -16,11 +16,13 @@
 
 package com.evo.composetoedge.components
 
-import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -37,10 +39,10 @@ import com.evo.composetoedge.data.androidPost
  */
 
 private val AvatarColors = arrayOf(
-        0xFFFAC302,
-        0xFF02C3FA,
-        0xFFC302FA,
-        0xFF02FAC3
+  0xFFFAC302,
+  0xFF02C3FA,
+  0xFFC302FA,
+  0xFF02FAC3
 )
 
 @Composable
@@ -48,15 +50,18 @@ fun Avatar(name: String, modifier: Modifier = Modifier) {
   val backgroundColor = AvatarColors.random().toInt()
   val textColor = ColorUtils.blendARGB(backgroundColor, Color.Black.toArgb(), 0.4f)
   Surface(
-          color = Color(backgroundColor),
-          modifier = Modifier.size(54.dp).clip(RoundedCornerShape(50)).then(modifier)
+    color = Color(backgroundColor),
+    modifier = Modifier.size(54.dp).clip(RoundedCornerShape(50)).then(modifier)
   ) {
-    Text(
-            text = name.first().toUpperCase().toString(),
-            fontWeight = FontWeight.Medium,
-            fontSize = 20.sp,
-            color = Color(textColor)
-    )
+    Box {
+      Text(
+        text = name.first().toUpperCase().toString(),
+        fontWeight = FontWeight.Medium,
+        fontSize = 20.sp,
+        color = Color(textColor),
+        modifier = Modifier.align(Alignment.Center)
+      )
+    }
   }
 }
 

@@ -52,18 +52,21 @@ fun Messages(
   repeat(4) {
     finalPosts.addAll(posts)
   }
+  val postCount = finalPosts.size
 
   LazyColumn(
     modifier = modifier,
     contentPadding = contentPadding
   ) {
-    itemsIndexed(items = finalPosts,
+    itemsIndexed(
+      items = finalPosts,
       itemContent = { index: Int, item: Post ->
         val topPadding = if (index == 0) 8.dp else 16.dp
+        val bottomPadding = if (index == postCount - 1) 16.dp else 0.dp
 
         Message(
           post = item, modifier = Modifier
-            .padding(top = topPadding)
+            .padding(top = topPadding, bottom = bottomPadding)
             .then(contentModifier)
         )
       })

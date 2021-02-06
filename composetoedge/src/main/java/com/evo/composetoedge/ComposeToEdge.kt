@@ -36,7 +36,7 @@ fun ComponentActivity.setEdgeToEdgeContent(content: @Composable () -> Unit) {
     Providers(
             WindowAmbient provides window,
             WindowInsetsAmbient provides window.getWindowInsetsCompat(),
-            children = content
+            content = content
     )
   }
 }

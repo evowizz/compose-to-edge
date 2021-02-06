@@ -18,13 +18,13 @@ package com.evo.composetoedge
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.platform.DensityAmbient
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -43,20 +43,20 @@ class MainActivity : AppCompatActivity() {
           val topPadding: Dp
           val bottomPadding: Dp
 
-          with(DensityAmbient.current) {
+          with(AmbientDensity.current) {
             topPadding = WindowInsetsAmbient.current.systemWindowInsetTop.toDp()
             bottomPadding = WindowInsetsAmbient.current.systemWindowInsetBottom.toDp()
           }
 
-          ScrollableColumn(
-                  modifier = Modifier.fillMaxSize(),
-                  contentPadding = PaddingValues(
-                          top = topPadding,
-                          bottom = bottomPadding,
-                  )
-          ) {
-            Messages(posts = initialPosts, modifier = Modifier.padding(start = 16.dp))
-          }
+          Messages(
+            posts = initialPosts,
+            modifier = Modifier.fillMaxSize(),
+            contentModifier = Modifier.padding(start = 16.dp),
+            contentPadding = PaddingValues(
+              top = topPadding,
+              bottom = bottomPadding,
+            )
+          )
         }
       }
     }

@@ -18,6 +18,8 @@ package com.evo.composetoedge.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -29,8 +31,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.evo.composetoedge.data.androidPost
 
 /**
@@ -38,15 +40,34 @@ import com.evo.composetoedge.data.androidPost
  */
 
 @Composable
-fun Messages(posts: List<Post>, modifier: Modifier) {
-  repeat(4) { repeat: Int ->
-    posts.forEachIndexed { index, post ->
-      val topPadding = if (index != 0 || repeat != 0) 16.dp else 8.dp
+fun Messages(
+  posts: List<Post>,
+  modifier: Modifier = Modifier,
+  contentModifier: Modifier,
+  contentPadding: PaddingValues = PaddingValues(0.dp),
+) {
 
-      Message(post = post, modifier = Modifier.padding(top = topPadding).then(modifier))
-    }
+  // Ugly, right?
+  val finalPosts = mutableListOf<Post>()
+  repeat(4) {
+    finalPosts.addAll(posts)
   }
 
+  LazyColumn(
+    modifier = modifier,
+    contentPadding = contentPadding
+  ) {
+    itemsIndexed(items = finalPosts,
+      itemContent = { index: Int, item: Post ->
+        val topPadding = if (index == 0) 8.dp else 16.dp
+
+        Message(
+          post = item, modifier = Modifier
+            .padding(top = topPadding)
+            .then(contentModifier)
+        )
+      })
+  }
 }
 
 @Composable
@@ -57,7 +78,11 @@ fun Message(
   val bubbleColor =
     if (MaterialTheme.colors.isLight) Color(0xFFF5F5F5) else Color(0xFF222222)
 
-  ConstraintLayout(Modifier.fillMaxWidth().then(modifier)) {
+  ConstraintLayout(
+    Modifier
+      .fillMaxWidth()
+      .then(modifier)
+  ) {
     // Declaring them separately for visibility
     val (avatar, username) = createRefs()
     val (message, moreOptions) = createRefs()
@@ -101,13 +126,16 @@ fun Message(
     Surface(
       color = bubbleColor,
       shape = RoundedCornerShape(50),
-      modifier = Modifier.size(32.dp).constrainAs(moreOptions) {
-        end.linkTo(parent.end, 16.dp)
-        centerVerticallyTo(message)
-      }
+      modifier = Modifier
+        .size(32.dp)
+        .constrainAs(moreOptions) {
+          end.linkTo(parent.end, 16.dp)
+          centerVerticallyTo(message)
+        }
     ) {
       Image(
-        asset = Icons.Filled.MoreVert,
+        imageVector = Icons.Filled.MoreVert,
+        contentDescription = "More",
         modifier = Modifier.size(24.dp),
         colorFilter = ColorFilter.tint(MaterialTheme.colors.onBackground.copy(alpha = 0.60f))
       )

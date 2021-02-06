@@ -16,7 +16,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.evo.composetoedge">
+    package="com.evo.composetoedge.sample">
 
   <application
       android:allowBackup="true"

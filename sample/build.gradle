@@ -23,7 +23,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.evo.composetoedge"
+        applicationId "com.evo.composetoedge.sample"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 2

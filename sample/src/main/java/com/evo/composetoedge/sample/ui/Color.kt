@@ -14,24 +14,11 @@
  * limitations under the License.
  */
 
-package com.evo.composetoedge.data
+package com.evo.composetoedge.sample.ui
 
-import com.evo.composetoedge.components.Post
+import androidx.compose.ui.graphics.Color
 
-/**
- * Created by Dylan Roussel on 23/10/2020
- */
-
-val androidPost = Post("Android", "Hello, world!")
-
-val initialPosts = arrayListOf(
-        Post("evowizz", "Just released my first Jetpack Compose library, which " +
-                "makes it really easy for you to develop edge-to-edge apps!"),
-
-        androidPost,
-        Post("Jetpack Compose", """This is a row!
-          |is
-          |a
-          |column!
-        """.trimMargin())
-)
+val purple200 = Color(0xFFBB86FC)
+val purple500 = Color(0xFF6200EE)
+val purple700 = Color(0xFF3700B3)
+val teal200 = Color(0xFF03DAC5)

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evo.composetoedge.components
+package com.evo.composetoedge.sample.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -33,7 +33,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.evo.composetoedge.data.androidPost
+import com.evo.composetoedge.sample.data.androidPost
 
 /**
  * Created by Dylan Roussel on 23/10/2020

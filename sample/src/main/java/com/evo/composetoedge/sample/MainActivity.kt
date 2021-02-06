@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Dylan Roussel
+ * Copyright 2021 Dylan Roussel
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evo.composetoedge
+package com.evo.composetoedge.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -25,12 +25,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientDensity
-import androidx.compose.ui.platform.DensityAmbient
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.evo.composetoedge.components.Messages
-import com.evo.composetoedge.data.initialPosts
-import com.evo.composetoedge.ui.ComposeToEdgeTheme
+import com.evo.composetoedge.WindowInsetsAmbient
+import com.evo.composetoedge.sample.components.Messages
+import com.evo.composetoedge.sample.data.initialPosts
+import com.evo.composetoedge.setEdgeToEdgeContent
+import com.evo.composetoedge.sample.ui.ComposeToEdgeTheme
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {

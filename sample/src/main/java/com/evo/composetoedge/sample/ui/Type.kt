@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evo.composetoedge.ui
+package com.evo.composetoedge.sample.ui
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

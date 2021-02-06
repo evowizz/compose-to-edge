@@ -20,7 +20,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -111,7 +113,7 @@ fun Message(
     // Message bubble
     Surface(
       color = bubbleColor,
-      shape = RoundedCornerShape(0.dp, 8.dp, 8.dp, 8.dp),
+      shape = MaterialTheme.shapes.medium.copy(topLeft = ZeroCornerSize),
       modifier = Modifier.constrainAs(message) {
         width = Dimension.preferredWrapContent.atMostWrapContent
         top.linkTo(username.bottom, 4.dp)

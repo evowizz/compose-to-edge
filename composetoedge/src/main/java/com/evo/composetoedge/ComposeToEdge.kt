@@ -16,13 +16,14 @@
 
 package com.evo.composetoedge
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.view.View
 import android.view.Window
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Providers
-import androidx.compose.ui.platform.ViewAmbient
+import androidx.compose.ui.platform.AmbientView
 import androidx.compose.ui.platform.setContent
 import androidx.core.view.WindowInsetsCompat
 
@@ -34,8 +35,8 @@ fun ComponentActivity.setEdgeToEdgeContent(content: @Composable () -> Unit) {
   setContent {
     setEdgeToEdge(window, edgeToEdge = true)
     Providers(
-            WindowAmbient provides window,
-            WindowInsetsAmbient provides window.getWindowInsetsCompat(),
+            AmbientWindow provides window,
+            AmbientWindowInsets provides window.getWindowInsetsCompat(),
             content = content
     )
   }
@@ -48,16 +49,17 @@ private fun Window.getWindowInsetsCompat(): WindowInsetsCompat {
 /**
  * Sets whether the app should draw behind system bars.
  */
+@SuppressLint("ComposableNaming")
 @Composable
 fun setEdgeToEdge(edgeToEdge: Boolean) {
-  val window = WindowAmbient.current
+  val window = AmbientWindow.current
   setEdgeToEdge(window, edgeToEdge = edgeToEdge)
 }
 
+@SuppressLint("ComposableNaming")
 @Composable
-@Suppress("DEPRECATION")
 private fun setEdgeToEdge(window: Window, edgeToEdge: Boolean) {
-  val view = ViewAmbient.current
+  val view = AmbientView.current
 
   //TODO: Use WindowCompat when AndroidX Core 1.5.0 is stable.
   // See: https://developer.android.com/jetpack/androidx/releases/core

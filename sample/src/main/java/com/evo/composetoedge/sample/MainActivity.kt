@@ -27,11 +27,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.evo.composetoedge.WindowInsetsAmbient
+import com.evo.composetoedge.AmbientWindowInsets
 import com.evo.composetoedge.sample.components.Messages
 import com.evo.composetoedge.sample.data.initialPosts
-import com.evo.composetoedge.setEdgeToEdgeContent
 import com.evo.composetoedge.sample.ui.ComposeToEdgeTheme
+import com.evo.composetoedge.setEdgeToEdgeContent
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
           val bottomPadding: Dp
 
           with(AmbientDensity.current) {
-            topPadding = WindowInsetsAmbient.current.systemWindowInsetTop.toDp()
-            bottomPadding = WindowInsetsAmbient.current.systemWindowInsetBottom.toDp()
+            topPadding = AmbientWindowInsets.current.systemWindowInsetTop.toDp()
+            bottomPadding = AmbientWindowInsets.current.systemWindowInsetBottom.toDp()
           }
 
           Messages(

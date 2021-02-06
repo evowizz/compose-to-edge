@@ -25,6 +25,26 @@ import androidx.core.view.WindowInsetsCompat
  * Created by Dylan Roussel on 21/10/2020
  */
 
-val WindowAmbient = staticAmbientOf<Window>()
+@Suppress("AmbientNaming")
+@Deprecated(
+  "Renamed to AmbientWindow",
+  replaceWith = ReplaceWith(
+    "AmbientWindow",
+    "com.evo.composetoedge.AmbientWindow"
+  )
+)
+val WindowAmbient get() = AmbientWindow
 
-val WindowInsetsAmbient = staticAmbientOf<WindowInsetsCompat>()
+val AmbientWindow = staticAmbientOf<Window>()
+
+@Suppress("AmbientNaming")
+@Deprecated(
+  "Renamed to AmbientWindowInsets",
+  replaceWith = ReplaceWith(
+    "AmbientWindowInsets",
+    "com.evo.composetoedge.AmbientWindowInsets"
+  )
+)
+val WindowInsetsAmbient get() = AmbientWindowInsets
+
+val AmbientWindowInsets = staticAmbientOf<WindowInsetsCompat>()

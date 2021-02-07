@@ -1,6 +1,6 @@
 # Compose-To-Edge
 
-[![](https://jitpack.io/v/evowizz/compose-to-edge.svg)](https://jitpack.io/#evowizz/compose-to-edge)![Build](https://github.com/evowizz/compose-to-edge/workflows/Build/badge.svg?branch=main)
+[![](https://jitpack.io/v/evowizz/compose-to-edge.svg)](https://jitpack.io/#evowizz/compose-to-edge) ![Build](https://github.com/evowizz/compose-to-edge/workflows/Build/badge.svg?branch=main)
 
 Compose-To-Edge is a small library allowing you to easily set up edge-to-edge configurations for your Jetpack Compose app.
 

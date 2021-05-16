@@ -4,6 +4,10 @@
 
 Compose-To-Edge is a small library allowing you to easily set up edge-to-edge configurations for your Jetpack Compose app.
 
+## DEPRECATED
+Compose-To-Edge was really fun to create. But since then, some libraries have evolved and are constantly maintained.
+If you are looking for something similar to Compose-To-Edge, I suggest you to look at [Accompanist](https://google.github.io/accompanist/insets/) which you can use along with [`WindowCompat.setDecorFitsSystemWindows(window, false)`](https://developer.android.com/reference/androidx/core/view/WindowCompat#setDecorFitsSystemWindows(android.view.Window,%20boolean))
+
 ## Setup
 Let's start by adding Jitpack to your project.
 ```gradle
